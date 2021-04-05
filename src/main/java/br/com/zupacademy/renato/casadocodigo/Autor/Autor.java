@@ -2,6 +2,7 @@ package br.com.zupacademy.renato.casadocodigo.Autor;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,7 +21,10 @@ public class Autor {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private @NotBlank String nome;
+	
+	@NotBlank 
+	@Column(unique = true)
+	private String nome;
 	private @NotBlank @Email String email;
 	private @NotBlank @Size(max = 400) String descricao;
 	private LocalDateTime instante = LocalDateTime.now();
