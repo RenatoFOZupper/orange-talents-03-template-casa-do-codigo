@@ -23,10 +23,17 @@ public class Autor {
 	private Long id;
 	
 	@NotBlank 
-	@Column(unique = true)
 	private String nome;
-	private @NotBlank @Email String email;
-	private @NotBlank @Size(max = 400) String descricao;
+	
+	@NotBlank 
+	@Email 
+	@Column(unique = true)
+	private String email;
+	
+	@NotBlank 
+	@Size(max = 400)
+	private  String descricao;
+	
 	private LocalDateTime instante = LocalDateTime.now();
 
 	public Autor(@NotBlank String nome, @NotBlank @Email String email,
