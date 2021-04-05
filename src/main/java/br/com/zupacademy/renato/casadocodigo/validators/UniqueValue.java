@@ -10,12 +10,12 @@ import javax.validation.Constraint;
 import javax.validation.Payload;
 
 @Documented
-@Constraint(validatedBy = {EmailUnicoValidator.class})
+@Constraint(validatedBy = {UniqueValueValidator.class})
 @Target({ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface EmailUnico {
+public @interface UniqueValue {
 
-	String message() default "Email já cadastrado...";
+	String message() default "Campo de valor único já cadastrado...";
 	
 	Class<?>[] groups() default {};
 	

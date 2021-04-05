@@ -4,7 +4,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-import br.com.zupacademy.renato.casadocodigo.validators.EmailUnico;
+import br.com.zupacademy.renato.casadocodigo.validators.UniqueValue;
 
 public class AutorRequest {
 
@@ -13,7 +13,7 @@ public class AutorRequest {
 
 	@NotBlank
 	@Email(message = "Digite um email válido...")
-	@EmailUnico(domainClass = Autor.class, fieldName = "email")
+	@UniqueValue(domainClass = Autor.class, fieldName = "email")
 	private String email;
 
 	@NotBlank
