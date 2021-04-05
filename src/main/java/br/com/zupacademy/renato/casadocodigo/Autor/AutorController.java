@@ -24,5 +24,4 @@ public class AutorController {
 		em.persist(autor);
 		return autor.toString();
 	}
-	
 }
