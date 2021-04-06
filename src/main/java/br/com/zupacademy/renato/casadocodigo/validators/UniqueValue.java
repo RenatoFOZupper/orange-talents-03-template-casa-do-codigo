@@ -16,12 +16,9 @@ import javax.validation.Payload;
 public @interface UniqueValue {
 
 	String message() default "Campo de valor único já cadastrado...";
-	
 	Class<?>[] groups() default {};
-	
 	Class<? extends Payload>[] payload() default {};
 	
 	String fieldName();
-	
 	Class<?> domainClass();	
 }

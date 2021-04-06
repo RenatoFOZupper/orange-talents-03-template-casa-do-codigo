@@ -16,7 +16,7 @@ public class UniqueValueValidator implements ConstraintValidator<UniqueValue, Ob
 	private Class<?> klass;
 
 	@PersistenceContext
-	private EntityManager manager;
+	private EntityManager em;
 
 	@Override
 	public void initialize(UniqueValue params) {
@@ -26,7 +26,7 @@ public class UniqueValueValidator implements ConstraintValidator<UniqueValue, Ob
 
 	@Override
 	public boolean isValid(Object value, ConstraintValidatorContext context) {
-		Query query = manager
+		Query query = em
 				.createQuery("SELECT 1 FROM " + klass.getName() + " WHERE " + domainAttribute + " =:VALUE");
 		query.setParameter("VALUE", value);
 
