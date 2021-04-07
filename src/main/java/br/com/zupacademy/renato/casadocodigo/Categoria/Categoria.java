@@ -18,7 +18,7 @@ public class Categoria {
 	@Column(unique = true)
 	private String nome;
 	
-	@Deprecated
+	//@Deprecated
 	public Categoria() { }
 
 	public Categoria(@NotBlank String nome) {
@@ -28,5 +28,15 @@ public class Categoria {
 	@Override
 	public String toString() {
 		return "Categoria [id = " + id + ", nome = " + nome + "]";
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public String getNome() {
+		return nome;
 	}	
+	
+	
 }

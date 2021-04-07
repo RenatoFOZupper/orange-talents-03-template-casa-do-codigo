@@ -35,6 +35,13 @@ public class Autor {
 	private  String descricao;
 	
 	private LocalDateTime instante = LocalDateTime.now();
+	
+	public Long getId() {
+		return id;
+	}
+	
+	@Deprecated
+	public Autor() { }
 
 	public Autor(@NotBlank String nome, @NotBlank @Email String email,
 			@NotBlank @Size(max = 400) String descricao) {
