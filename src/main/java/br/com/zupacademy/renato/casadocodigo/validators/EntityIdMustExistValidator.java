@@ -8,9 +8,7 @@ import javax.persistence.Query;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-import org.springframework.util.Assert;
-
-public class UniqueValueValidator implements ConstraintValidator<UniqueValue, Object> {
+public class EntityIdMustExistValidator implements ConstraintValidator<EntityIdMustExist, Object> {
 	
 	private String domainAttribute;
 	private Class<?> klass;
@@ -19,7 +17,7 @@ public class UniqueValueValidator implements ConstraintValidator<UniqueValue, Ob
 	private EntityManager em;
 
 	@Override
-	public void initialize(UniqueValue params) {
+	public void initialize(EntityIdMustExist params) {
 		domainAttribute = params.fieldName();
 		klass = params.domainClass();
 	}
@@ -31,9 +29,6 @@ public class UniqueValueValidator implements ConstraintValidator<UniqueValue, Ob
 		query.setParameter("VALUE", value);
 
 		List<?> list = query.getResultList();
-		Assert.state(list.size() <= 1,
-				"Foi encontrado mais de um " + klass.getName() + " com o atributo " + domainAttribute + " = " + value);
-
-		return list.isEmpty();
+		return !list.isEmpty();
 	}
 }

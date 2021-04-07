@@ -5,34 +5,64 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import javax.validation.constraints.Future;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.sun.istack.NotNull;
 
 import br.com.zupacademy.renato.casadocodigo.Autor.Autor;
+import br.com.zupacademy.renato.casadocodigo.Autor.AutorRepository;
 import br.com.zupacademy.renato.casadocodigo.Categoria.Categoria;
+import br.com.zupacademy.renato.casadocodigo.Categoria.CategoriaRepository;
+import br.com.zupacademy.renato.casadocodigo.validators.EntityIdMustExist;
+import br.com.zupacademy.renato.casadocodigo.validators.UniqueValue;
 
 public class LivroRequest implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	@NotBlank
+	@UniqueValue(domainClass = Livro.class, fieldName = "titulo")
 	private String titulo;
+
+	@NotBlank
+	@Size(min = 5, max = 500)
 	private String resumo;
+
 	private String sumario;
+
+	@NotNull
+	@Min(20)
 	private BigDecimal preco;
+
+	@NotNull
+	@Min(100)
 	private Integer numeroDePaginas;
+
+	@NotBlank
+	@UniqueValue(domainClass = Livro.class, fieldName = "isbn")
 	private String isbn;
 
 	@Future
-	@JsonFormat(pattern = "dd-MM-yyyy")
+	@JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDate dataDePublicacao;
+
+	@NotNull
+	@EntityIdMustExist(domainClass = Autor.class, fieldName = "id")
 	private Long autorId;
+
+	@NotNull
+	@EntityIdMustExist(domainClass = Categoria.class, fieldName = "id")
 	private Long categoriaId;
 
 	// @Deprecated
 	public LivroRequest() {
 	}
 
-	public LivroRequest(String titulo, String resumo, String sumario, BigDecimal preco, Integer numeroDePaginas,
-			String isbn, LocalDate dataDePublicacao, Long autorId, Long categoriaId) {
+	public LivroRequest(@NotBlank String titulo, @NotBlank @Size(min = 5, max = 500) String resumo, String sumario,
+			@Min(20) BigDecimal preco, @Min(100) Integer numeroDePaginas, @NotBlank String isbn,
+			@Future LocalDate dataDePublicacao, Long autorId, Long categoriaId) {
 		super();
 		this.titulo = titulo;
 		this.resumo = resumo;
@@ -81,7 +111,9 @@ public class LivroRequest implements Serializable {
 		return categoriaId;
 	}
 
-	public Livro toModel(Autor autor, Categoria categoria) {
+	public Livro toModel(AutorRepository autorRepository, CategoriaRepository categoriaRepository) {
+		Autor autor = autorRepository.getOne(autorId);
+		Categoria categoria = categoriaRepository.getOne(categoriaId);
 
 		return new Livro(this.titulo, this.resumo, this.sumario, this.preco, this.numeroDePaginas, this.isbn,
 				dataDePublicacao, autor, categoria);
