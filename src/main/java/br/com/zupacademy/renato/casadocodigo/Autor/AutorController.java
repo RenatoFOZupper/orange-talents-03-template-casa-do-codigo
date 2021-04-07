@@ -1,7 +1,5 @@
 package br.com.zupacademy.renato.casadocodigo.Autor;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 
@@ -14,14 +12,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/autores")
 public class AutorController {
 	
-	@PersistenceContext
-	EntityManager em;
+	private AutorRepository autorRepository;
+
+	public AutorController(AutorRepository autorRepository) {
+		this.autorRepository = autorRepository;
+	}
 
 	@PostMapping
 	@Transactional
 	public String criaAutor(@RequestBody @Valid AutorRequest request) {
 		Autor autor = request.toModel();
-		em.persist(autor);
+		autorRepository.save(autor);
 		return autor.toString();
 	}
 }

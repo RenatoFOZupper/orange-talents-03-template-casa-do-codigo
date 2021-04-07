@@ -1,4 +1,4 @@
-package br.com.zupacademy.renato.casadocodigo.validators;
+package br.com.zupacademy.renato.casadocodigo.compartilhado;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

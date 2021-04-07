@@ -30,7 +30,6 @@ public class LivroController {
 	@PostMapping
 	@Transactional
 	public String cadastraLivro(@RequestBody @Valid LivroRequest livroRequest) {
-
 		Livro livro = livroRequest.toModel(autorRepository, categoriaRepository);
 		livro = livroRepository.save(livro);
 		return livro.toString();

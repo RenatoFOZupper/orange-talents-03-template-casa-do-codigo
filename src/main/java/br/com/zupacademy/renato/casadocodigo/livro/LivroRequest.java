@@ -16,8 +16,8 @@ import br.com.zupacademy.renato.casadocodigo.Autor.Autor;
 import br.com.zupacademy.renato.casadocodigo.Autor.AutorRepository;
 import br.com.zupacademy.renato.casadocodigo.Categoria.Categoria;
 import br.com.zupacademy.renato.casadocodigo.Categoria.CategoriaRepository;
-import br.com.zupacademy.renato.casadocodigo.validators.EntityIdMustExist;
-import br.com.zupacademy.renato.casadocodigo.validators.UniqueValue;
+import br.com.zupacademy.renato.casadocodigo.compartilhado.EntityIdMustExist;
+import br.com.zupacademy.renato.casadocodigo.compartilhado.UniqueValue;
 
 public class LivroRequest implements Serializable {
 	private static final long serialVersionUID = 1L;
