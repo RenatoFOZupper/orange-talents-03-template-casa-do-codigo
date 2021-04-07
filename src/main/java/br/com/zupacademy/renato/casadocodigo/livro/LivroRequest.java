@@ -57,8 +57,7 @@ public class LivroRequest implements Serializable {
 	private Long categoriaId;
 
 	// @Deprecated
-	public LivroRequest() {
-	}
+	public LivroRequest() {	}
 
 	public LivroRequest(@NotBlank String titulo, @NotBlank @Size(min = 5, max = 500) String resumo, String sumario,
 			@Min(20) BigDecimal preco, @Min(100) Integer numeroDePaginas, @NotBlank String isbn,
@@ -110,6 +109,8 @@ public class LivroRequest implements Serializable {
 	public Long getCategoriaId() {
 		return categoriaId;
 	}
+	
+	//Método que converte um objeto tipo LivroRequest em Livro atrelando o autor e categoria pelo id
 
 	public Livro toModel(AutorRepository autorRepository, CategoriaRepository categoriaRepository) {
 		Autor autor = autorRepository.getOne(autorId);

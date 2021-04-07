@@ -28,28 +28,28 @@ public class Livro implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@NotBlank
 	@Column(unique = true)
 	private String titulo;
-	
+
 	@NotBlank
-	@Size(min=5, max=500)
+	@Size(min = 5, max = 500)
 	private String resumo;
-	
+
 	private String sumario;
-	
+
 	@NotNull
 	@Min(20)
 	private BigDecimal preco;
-	
+
 	@NotNull
 	@Min(100)
 	private Integer numeroDePaginas;
-	
+
 	@Column(unique = true)
 	private String isbn;
-	
+
 	@Future
 	private LocalDate dataDePublicacao;
 
@@ -85,6 +85,46 @@ public class Livro implements Serializable {
 		return "Livro [id=" + id + ", titulo=" + titulo + ", resumo=" + resumo + ", sumario=" + sumario + ", preco="
 				+ preco + ", numeroDePaginas=" + numeroDePaginas + ", isbn=" + isbn + ", dataDePublicacao="
 				+ dataDePublicacao + ", autor=" + autor + ", categoria=" + categoria + "]";
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public String getTitulo() {
+		return titulo;
+	}
+
+	public String getResumo() {
+		return resumo;
+	}
+
+	public String getSumario() {
+		return sumario;
+	}
+
+	public BigDecimal getPreco() {
+		return preco;
+	}
+
+	public Integer getNumeroDePaginas() {
+		return numeroDePaginas;
+	}
+
+	public String getIsbn() {
+		return isbn;
+	}
+
+	public LocalDate getDataDePublicacao() {
+		return dataDePublicacao;
+	}
+
+	public Autor getAutor() {
+		return autor;
+	}
+
+	public Categoria getCategoria() {
+		return categoria;
 	}
 
 }
