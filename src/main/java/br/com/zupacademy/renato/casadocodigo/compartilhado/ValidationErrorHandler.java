@@ -59,9 +59,9 @@ public class ValidationErrorHandler {
 
 		return validationErrors;
 	}
-
+	
 	private String getErrorMessage(ObjectError error) {
 		return messageSource.getMessage(error, LocaleContextHolder.getLocale());
 	}
-
+	
 }

@@ -1,6 +1,7 @@
 package br.com.zupacademy.renato.casadocodigo.livro;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
@@ -8,6 +9,7 @@ import javax.validation.Valid;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,10 +44,25 @@ public class LivroController {
 	}
 	
 	@GetMapping
+	@Transactional
 	public ResponseEntity<List<LivroResponse>> buscaTodosLivros() {
 		List<Livro> lista = livroRepository.findAll();
 		List<LivroResponse> listaResponse = lista.stream().map(LivroResponse :: new).collect(Collectors.toList());
 		return ResponseEntity.ok(listaResponse);
+	}
+	
+	@GetMapping(value = "/{id}")
+	@Transactional
+	public ResponseEntity<DetalhesLivroResponse> detalhesDoLivro(@PathVariable Long id) {
+		Optional<Livro> optional = livroRepository.findById(id);
+		if (optional.isPresent()) {
+			Livro livro = optional.get();
+			DetalhesLivroResponse response = new DetalhesLivroResponse(livro);
+			return ResponseEntity.ok().body(response);
+		}
+		return ResponseEntity.notFound().build();
+		
+		//throw new IllegalArgumentException("Resource not found!"); 
 	}
 	
 	
