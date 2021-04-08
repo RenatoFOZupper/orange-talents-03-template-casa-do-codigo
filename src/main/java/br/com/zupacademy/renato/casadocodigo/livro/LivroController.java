@@ -25,8 +25,8 @@ public class LivroController {
 	private AutorRepository autorRepository;
 	private CategoriaRepository categoriaRepository;
 	private LivroRepository livroRepository;
-	
-	//Injecao de Dependencia via construtor
+
+	// Injecao de Dependencia via construtor
 
 	public LivroController(AutorRepository autorRepository, CategoriaRepository categoriaRepository,
 			LivroRepository livroRepository) {
@@ -42,15 +42,15 @@ public class LivroController {
 		livro = livroRepository.save(livro);
 		return livro.toString();
 	}
-	
+
 	@GetMapping
 	@Transactional
 	public ResponseEntity<List<LivroResponse>> buscaTodosLivros() {
 		List<Livro> lista = livroRepository.findAll();
-		List<LivroResponse> listaResponse = lista.stream().map(LivroResponse :: new).collect(Collectors.toList());
+		List<LivroResponse> listaResponse = lista.stream().map(LivroResponse::new).collect(Collectors.toList());
 		return ResponseEntity.ok(listaResponse);
 	}
-	
+
 	@GetMapping(value = "/{id}")
 	@Transactional
 	public ResponseEntity<DetalhesLivroResponse> detalhesDoLivro(@PathVariable Long id) {
@@ -61,10 +61,6 @@ public class LivroController {
 			return ResponseEntity.ok().body(response);
 		}
 		return ResponseEntity.notFound().build();
-		
-		//throw new IllegalArgumentException("Resource not found!"); 
 	}
-	
-	
 
 }
