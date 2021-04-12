@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.zupacademy.renato.casadocodigo.Autor.AutorRepository;
-import br.com.zupacademy.renato.casadocodigo.Categoria.CategoriaRepository;
+import br.com.zupacademy.renato.casadocodigo.autor.AutorRepository;
+import br.com.zupacademy.renato.casadocodigo.categoria.CategoriaRepository;
 
 @RestController
 @RequestMapping(value = "/livros")

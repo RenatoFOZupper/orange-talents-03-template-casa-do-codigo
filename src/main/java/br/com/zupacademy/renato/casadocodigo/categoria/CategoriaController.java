@@ -1,4 +1,4 @@
-package br.com.zupacademy.renato.casadocodigo.Categoria;
+package br.com.zupacademy.renato.casadocodigo.categoria;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

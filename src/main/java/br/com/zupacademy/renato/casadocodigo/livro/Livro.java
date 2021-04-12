@@ -17,8 +17,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import br.com.zupacademy.renato.casadocodigo.Autor.Autor;
-import br.com.zupacademy.renato.casadocodigo.Categoria.Categoria;
+import br.com.zupacademy.renato.casadocodigo.autor.Autor;
+import br.com.zupacademy.renato.casadocodigo.categoria.Categoria;
 
 @Entity
 @Table(name = "livros")

@@ -1,4 +1,4 @@
-package br.com.zupacademy.renato.casadocodigo.Autor;
+package br.com.zupacademy.renato.casadocodigo.autor;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

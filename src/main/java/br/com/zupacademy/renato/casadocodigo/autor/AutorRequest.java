@@ -1,4 +1,4 @@
-package br.com.zupacademy.renato.casadocodigo.Autor;
+package br.com.zupacademy.renato.casadocodigo.autor;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;

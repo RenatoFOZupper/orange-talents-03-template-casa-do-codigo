@@ -12,10 +12,10 @@ import javax.validation.constraints.Size;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.sun.istack.NotNull;
 
-import br.com.zupacademy.renato.casadocodigo.Autor.Autor;
-import br.com.zupacademy.renato.casadocodigo.Autor.AutorRepository;
-import br.com.zupacademy.renato.casadocodigo.Categoria.Categoria;
-import br.com.zupacademy.renato.casadocodigo.Categoria.CategoriaRepository;
+import br.com.zupacademy.renato.casadocodigo.autor.Autor;
+import br.com.zupacademy.renato.casadocodigo.autor.AutorRepository;
+import br.com.zupacademy.renato.casadocodigo.categoria.Categoria;
+import br.com.zupacademy.renato.casadocodigo.categoria.CategoriaRepository;
 import br.com.zupacademy.renato.casadocodigo.compartilhado.EntityIdMustExist;
 import br.com.zupacademy.renato.casadocodigo.compartilhado.UniqueValue;
 

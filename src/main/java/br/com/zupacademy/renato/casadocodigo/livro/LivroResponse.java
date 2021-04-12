@@ -4,8 +4,8 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-import br.com.zupacademy.renato.casadocodigo.Autor.Autor;
-import br.com.zupacademy.renato.casadocodigo.Categoria.Categoria;
+import br.com.zupacademy.renato.casadocodigo.autor.Autor;
+import br.com.zupacademy.renato.casadocodigo.categoria.Categoria;
 
 public class LivroResponse implements Serializable {
 	private static final long serialVersionUID = 1L;

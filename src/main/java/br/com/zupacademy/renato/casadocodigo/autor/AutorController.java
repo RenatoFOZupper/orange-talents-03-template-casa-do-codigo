@@ -1,4 +1,4 @@
-package br.com.zupacademy.renato.casadocodigo.Autor;
+package br.com.zupacademy.renato.casadocodigo.autor;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
