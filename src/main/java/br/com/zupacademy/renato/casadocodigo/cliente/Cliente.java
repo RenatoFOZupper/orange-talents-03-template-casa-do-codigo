@@ -1,5 +1,6 @@
 package br.com.zupacademy.renato.casadocodigo.cliente;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,12 +16,26 @@ public class Cliente {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	@Column(unique = true)
 	private String email;
+	
+	@Column(nullable = false)
 	private String nome;
+	
+	@Column(nullable = false)
 	private String sobrenome;
+	
+	@Column(unique = true)
 	private String documento;
+	
+	@Column(nullable = false)
 	private String endereco;
+	
+	@Column(nullable = false)
 	private String complemento;
+	
+	@Column(nullable = false)
 	private String cidade;
 
 	@ManyToOne
@@ -29,8 +44,12 @@ public class Cliente {
 	@ManyToOne
 	private Estado estado;
 
+	@Column(nullable = false)
 	private String telefone;
+	
+	@Column(nullable = false)
 	private String cep;
+
 
 	public Cliente(String email, String nome, String sobrenome, String documento, String endereco, String complemento,
 			String cidade, Pais pais, String telefone, String cep) {

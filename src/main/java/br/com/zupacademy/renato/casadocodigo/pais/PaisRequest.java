@@ -18,12 +18,10 @@ public class PaisRequest {
 		this.nome = nome;
 	}
 
-	
 	public String getNome() {
 		return nome;
 	}
-	
-	
+		
 	public Pais toModel() {
 		return new Pais(this.nome);
 	}

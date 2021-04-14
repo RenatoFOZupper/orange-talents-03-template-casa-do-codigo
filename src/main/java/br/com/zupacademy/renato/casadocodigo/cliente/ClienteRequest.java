@@ -8,11 +8,11 @@ import javax.validation.constraints.NotNull;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 
+import br.com.zupacademy.renato.casadocodigo.compartilhado.CpfOuCnpjValidation;
 import br.com.zupacademy.renato.casadocodigo.compartilhado.EntityIdMustExist;
 import br.com.zupacademy.renato.casadocodigo.compartilhado.UniqueValue;
 import br.com.zupacademy.renato.casadocodigo.estado.Estado;
 import br.com.zupacademy.renato.casadocodigo.pais.Pais;
-
 
 public class ClienteRequest {
 	
@@ -23,7 +23,7 @@ public class ClienteRequest {
 	
 	@NotBlank private String sobrenome;
 	
-	//@CpfOuCnpjValidation
+	@CpfOuCnpjValidation
 	@UniqueValue(domainClass = Cliente.class, fieldName = "documento")
 	@NotBlank private String documento;
 	
@@ -103,7 +103,7 @@ public class ClienteRequest {
 	public String getCep() {
 		return cep;
 	}
-	
+		
 	public Cliente toModel(EntityManager em) {				
 		Pais pais = em.find(Pais.class, idPais);
 		
@@ -113,7 +113,8 @@ public class ClienteRequest {
 			Estado estado = em.find(Estado.class, idEstado);
 			
 			if (estado.getPais() != pais) {
-				throw new ResponseStatusException(HttpStatus.CONFLICT ,"verifique se esse"+ estado.getNome() + "pertence relamente a "+ pais.getNome());
+				throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+				
 			}
 			
 			cliente.setEstado(estado);
