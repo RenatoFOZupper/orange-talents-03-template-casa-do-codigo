@@ -11,7 +11,7 @@ import javax.validation.Payload;
 
 @Documented
 @Constraint(validatedBy = {EstadoPaisValidator.class})
-@Target({ElementType.TYPE})
+@Target({ElementType.TYPE, ElementType.LOCAL_VARIABLE})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface EstadoPais {
 

@@ -40,7 +40,7 @@ public class Autor {
 		return id;
 	}
 	
-	@Deprecated
+	//@Deprecated - HIBERNATE ONLY
 	public Autor() { }
 
 	public Autor(@NotBlank String nome, @NotBlank @Email String email,
