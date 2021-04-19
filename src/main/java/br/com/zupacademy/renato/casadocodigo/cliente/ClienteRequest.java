@@ -10,10 +10,12 @@ import org.springframework.web.server.ResponseStatusException;
 
 import br.com.zupacademy.renato.casadocodigo.compartilhado.CpfOuCnpjValidation;
 import br.com.zupacademy.renato.casadocodigo.compartilhado.EntityIdMustExist;
+import br.com.zupacademy.renato.casadocodigo.compartilhado.EstadoPaisTeste;
 import br.com.zupacademy.renato.casadocodigo.compartilhado.UniqueValue;
 import br.com.zupacademy.renato.casadocodigo.estado.Estado;
 import br.com.zupacademy.renato.casadocodigo.pais.Pais;
 
+@EstadoPaisTeste
 public class ClienteRequest {
 	
 	@UniqueValue(domainClass = Cliente.class, fieldName = "email")
@@ -111,12 +113,6 @@ public class ClienteRequest {
 		
 		if (this.idEstado != null) {
 			Estado estado = em.find(Estado.class, idEstado);
-			
-			if (estado.getPais() != pais) {
-				throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
-				
-			}
-			
 			cliente.setEstado(estado);
 		}
 		
